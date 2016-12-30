@@ -97,9 +97,9 @@
 
 	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="10%") echo 'checked="checked"';?> value="10%" >10%
 	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="15%") echo 'checked="checked"';?> value="15%">15%
-	<input type="radio" name="percent" <?php	if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?> value="20%">20%
+	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?> value="20%">20%
 	<br>
-	<input type="radio" name="percent" <?php	if(!isset($_POST["percent"]) || $_POST["percent"]=="custom") echo 'checked="checked"';?> value="custom">Custom:
+	<input type="radio" name="percent" <?php if(!isset($_POST["percent"]) || $_POST["percent"]=="custom") echo 'checked="checked"';?> value="custom">Custom:
 	<input type="text" name="custompercent" placeholder="18.5" maxlength="5" value="<?php echo $cpercent;?>">%
 	</span><br><br>
 
