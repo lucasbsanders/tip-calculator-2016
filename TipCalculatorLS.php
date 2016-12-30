@@ -6,9 +6,9 @@
 	body{
 		/*background code via http://lea.verou.me/css3patterns/*/
 		background:
-		linear-gradient(135deg, lavender 22px, thistle 22px, thistle 24px, transparent 24px, transparent 67px, thistle 67px, thistle 69px, transparent 69px),
-		linear-gradient(225deg, lavender 22px, thistle 22px, thistle 24px, transparent 24px, transparent 67px, thistle 67px, thistle 69px, transparent 69px)0 64px;
-		background-color:lavender;
+		linear-gradient(135deg, white 22px, lavender 22px, lavender 24px, transparent 24px, transparent 67px, lavender 67px, lavender 69px, transparent 69px),
+		linear-gradient(225deg, white 22px, lavender 22px, lavender 24px, transparent 24px, transparent 67px, lavender 67px, lavender 69px, transparent 69px)0 64px;
+		background-color:white;
 		background-size: 64px 128px
 	}
 	div.outer{
@@ -27,6 +27,11 @@
 		padding: 15px;
 		margin: 5px;
 		color: indigo;
+	}
+	h2{
+		text-align: center;
+		font: 30px/1 Georgia, serif;
+		font-weight: bold;
 	}
 </style>
 </head>
@@ -89,26 +94,23 @@
 <form action='TipCalculatorLS.php' method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <p><!--form fields and labels-->
 	<span style="<?php echo $error_bill;?>">Bill subtotal:
-	$<input type="text" name="bill" placeholder="123.45" maxlength="8" value="<?php echo $bill?>">
+	$<input type="text" name="bill" placeholder="123.45" maxlength="8" value="<?php echo $bill?>" style="width: 70px">
 	</span><br><br>
 
-	<span style="<?php echo $error_per;?>">Tip percentage:
-	<br><br>
-
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="10%") echo 'checked="checked"';?> value="10%" >10%
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="15%") echo 'checked="checked"';?> value="15%">15%
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?> value="20%">20%
-	<br>
+	<span style="<?php echo $error_per;?>">Tip percentage:<br>
+	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="10%") echo 'checked="checked"';?> value="10%">10%<br>
+	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="15%") echo 'checked="checked"';?> value="15%">15%<br>
+	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?> value="20%">20%<br>
 	<input type="radio" name="percent" <?php if(!isset($_POST["percent"]) || $_POST["percent"]=="custom") echo 'checked="checked"';?> value="custom">Custom:
-	<input type="text" name="custompercent" placeholder="18.5" maxlength="5" value="<?php echo $cpercent;?>">%
+	<input type="text" name="custompercent" placeholder="18.5" maxlength="6" value="<?php echo $cpercent;?>" style="width: 45px">%
 	</span><br><br>
 
 	<span style="<?php echo $error_split;?>">Split between:
-	$<input type="text" name="split" placeholder="12" maxlength="2" value="<?php echo $split;?>" style="<?php echo $error_split;?>">
+	<input type="text" name="split" placeholder="12" maxlength="2" value="<?php echo $split;?>" style="width: 30px">
 	person(s)
 	</span><br><br>
 
-	<input type="submit" name="submitbutton" style="margin-left: 40%;">
+	<input type="submit" name="submitbutton" value="Calculate" style="margin-left: 38%;">
 </p>
 </form>
 <!--following field prints results, if input is correct-->
