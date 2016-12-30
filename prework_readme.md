@@ -4,7 +4,7 @@ TipCalculatorLS.php is a tip calculator PHP page.
 
 Submitted by: Lucas Sanders
 
-Time spent: 10 hours spent in total
+Time spent: 8 hours spent in total
 
 ## User Stories
 
