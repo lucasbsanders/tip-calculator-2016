@@ -67,7 +67,7 @@
 				break;
 			case "custom":
 				if($print){
-					$percent=intval($cpercent)/100.0;
+					$percent=$cpercent/100.0;
 				}
 				break;
 			default:
@@ -91,35 +91,35 @@
 ?>
 <div class="outer"><!--text box that encloses this calculator-->
 <h2>Tip Calculator</h2>
-<form action='TipCalculatorLS.php' method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<form method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <p><!--form fields and labels-->
 	<span style="<?php echo $error_bill;?>">Bill subtotal:
-	$<input type="text" name="bill" placeholder="123.45" maxlength="8" value="<?php echo $bill?>" style="width: 70px">
+	$<input type="text" name="bill" style="width: 70px" maxlength="8" placeholder="123.45" value="<?php echo $bill?>">
 	</span><br><br>
 
 	<span style="<?php echo $error_per;?>">Tip percentage:<br>
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="10%") echo 'checked="checked"';?> value="10%">10%<br>
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="15%") echo 'checked="checked"';?> value="15%">15%<br>
-	<input type="radio" name="percent" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?> value="20%">20%<br>
-	<input type="radio" name="percent" <?php if(!isset($_POST["percent"]) || $_POST["percent"]=="custom") echo 'checked="checked"';?> value="custom">Custom:
-	<input type="text" name="custompercent" placeholder="18.5" maxlength="6" value="<?php echo $cpercent;?>" style="width: 45px">%
+	<input type="radio" name="percent" value="10%" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="10%") echo 'checked="checked"';?>>10%<br>
+	<input type="radio" name="percent" value="15%" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="15%") echo 'checked="checked"';?>>15%<br>
+	<input type="radio" name="percent" value="20%" <?php if(isset($_POST["percent"]) && $_POST["percent"]=="20%") echo 'checked="checked"';?>>20%<br>
+	<input type="radio" name="percent" value="custom" <?php if(!isset($_POST["percent"]) || $_POST["percent"]=="custom") echo 'checked="checked"';?>>Custom:
+	<input type="text" name="custompercent" style="width: 45px" maxlength="6" placeholder="18.5" value="<?php echo $cpercent;?>">%
 	</span><br><br>
 
 	<span style="<?php echo $error_split;?>">Split between:
-	<input type="text" name="split" placeholder="12" maxlength="2" value="<?php echo $split;?>" style="width: 30px">
+	<input type="text" name="split"  style="width: 30px" maxlength="2" placeholder="12" value="<?php echo $split;?>">
 	person(s)
 	</span><br><br>
 
-	<input type="submit" name="submitbutton" value="Calculate" style="margin-left: 38%;">
+	<input type="submit" name="submitbutton" style="margin-left: 38%;" value="Calculate">
 </p>
 </form>
 <!--following field prints results, if input is correct-->
 <?php
 	if($print){
 		echo "<br><div class='inner'>";
-			printf("Tip:\t$%.2f<br><br>Total:\t$%.2f", $bill*$percent, $bill*(1+$percent));
+			printf("Tip: $%.2f<br><br>Total: $%.2f", $bill*$percent, $bill*(1+$percent));
 			if($printSplit){
-				printf("<br><br>Tip each:\t$%.2f<br><br>Total each:\t$%.2f", $bill*$percent/$split, $bill*(1+$percent)/$split);
+				printf("<br><br>Tip each: $%.2f<br><br>Total each: $%.2f", $bill*$percent/$split, $bill*(1+$percent)/$split);
 			}
 		echo "</div>";
 	}
